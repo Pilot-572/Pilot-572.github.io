@@ -29,7 +29,7 @@
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; font-size: 110%; }
+    html { scroll-behavior: smooth; font-size: 110%; overflow-x: hidden; }
 
     body {
       background: var(--bg);
@@ -1195,26 +1195,63 @@
 
     /* ─── RESPONSIVE ──────────────────────── */
     @media (max-width: 768px) {
+      html { font-size: 100%; }
+
+      :root { --section-padding: 4.5rem 1.25rem; }
+
+      .container { padding: 0 1.25rem; }
+
+      /* Nav */
       .nav-links { display: none; }
       .hamburger { display: flex; }
 
-      .about-grid { grid-template-columns: 1fr; }
-      .about-photo { aspect-ratio: 4/3; max-width: 360px; }
+      /* Hero */
+      #hero { padding: 6rem 1.25rem 4rem; }
+      .hero-name { font-size: clamp(3.2rem, 18vw, 5.5rem); }
 
+      /* About */
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .about-photo { aspect-ratio: 4/3; max-width: 100%; }
+      .about-stats { grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+      /* Projects */
       .projects-grid { grid-template-columns: 1fr; }
 
-      .chartreuse-top { grid-template-columns: 1fr; }
-      .chartreuse-logo-box { max-width: 180px; }
+      /* Chartreuse */
+      .chartreuse-top { grid-template-columns: 1fr; gap: 2rem; }
+      .chartreuse-logo-box { max-width: 140px; }
       .teams-grid { grid-template-columns: 1fr; }
 
-      .contact-grid { grid-template-columns: 1fr; }
+      /* Awards */
+      .award-featured { grid-template-columns: 1fr; gap: 1rem; }
+      .awards-secondary { grid-template-columns: 1fr; }
 
+      /* Contact */
+      .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+
+      /* Modal */
+      .modal {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        border-radius: 0;
+        max-height: 100dvh;
+        overflow-y: auto;
+      }
+      .modal-overlay { align-items: flex-end; }
+      .modal-img { max-height: 45vw; }
+
+      /* Footer */
       footer { flex-direction: column; gap: 0.5rem; text-align: center; }
     }
 
     @media (max-width: 480px) {
+      :root { --section-padding: 3.5rem 1rem; }
+      .container { padding: 0 1rem; }
       .about-stats { grid-template-columns: 1fr; }
       #chartreuse::before { display: none; }
+      .hero-name { font-size: clamp(2.8rem, 20vw, 4.5rem); }
+      .link-value { font-size: 0.7rem; }
     }
 
     /* ─── EDGE GLOW ─────────────────────── */
@@ -1961,6 +1998,15 @@
     };
     window.addEventListener('scroll', onScroll, { passive: true });
 
+    // ── Touch detection — disable mouse-only effects ─
+    const isTouch = window.matchMedia('(hover: none)').matches;
+    if (isTouch) {
+      document.getElementById('cursor-dot').style.display = 'none';
+      document.getElementById('cursor-ring').style.display = 'none';
+      document.body.style.cursor = '';
+      document.querySelectorAll('*').forEach(el => el.style.cursor = '');
+    }
+
     // ── Custom cursor ───────────────────────────────
     const dot = document.getElementById('cursor-dot');
     const ring = document.getElementById('cursor-ring');
@@ -1985,24 +2031,27 @@
       progressBar.style.transform = `scaleX(${pct})`;
     }, { passive: true });
 
-    // ── 3D card tilt + spotlight ────────────────────
+    // ── 3D card tilt + spotlight (mouse only) ───────
+    if (isTouch) { document.querySelectorAll('.contact-link').forEach(l => l.style.willChange = ''); }
     document.querySelectorAll('.project-card').forEach(card => {
       const spotlight = document.createElement('div');
       spotlight.className = 'card-spotlight';
       card.appendChild(spotlight);
 
-      card.addEventListener('mousemove', e => {
-        const r = card.getBoundingClientRect();
-        const x = (e.clientX - r.left) / r.width  - 0.5;
-        const y = (e.clientY - r.top)  / r.height - 0.5;
-        card.style.transform = `perspective(800px) rotateY(${x * 8}deg) rotateX(${-y * 6}deg) translateZ(4px)`;
-        const lx = e.clientX - r.left;
-        const ly = e.clientY - r.top;
-        spotlight.style.background = `radial-gradient(circle 220px at ${lx}px ${ly}px, rgba(127,255,0,0.09), transparent 70%)`;
-      });
-      card.addEventListener('mouseleave', () => {
-        card.style.transform = '';
-      });
+      if (!isTouch) {
+        card.addEventListener('mousemove', e => {
+          const r = card.getBoundingClientRect();
+          const x = (e.clientX - r.left) / r.width  - 0.5;
+          const y = (e.clientY - r.top)  / r.height - 0.5;
+          card.style.transform = `perspective(800px) rotateY(${x * 8}deg) rotateX(${-y * 6}deg) translateZ(4px)`;
+          const lx = e.clientX - r.left;
+          const ly = e.clientY - r.top;
+          spotlight.style.background = `radial-gradient(circle 220px at ${lx}px ${ly}px, rgba(127,255,0,0.09), transparent 70%)`;
+        });
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = '';
+        });
+      }
     });
 
     // ── Text scramble on section titles ─────────────
@@ -2031,7 +2080,8 @@
     }, { threshold: 0.5 });
     document.querySelectorAll('.section-title').forEach(el => scrambleObserver.observe(el));
 
-    // ── Magnetic contact links ───────────────────────
+    // ── Magnetic contact links (mouse only) ─────────
+    if (isTouch) return;
     document.querySelectorAll('.contact-link').forEach(link => {
       link.addEventListener('mousemove', e => {
         const r = link.getBoundingClientRect();
