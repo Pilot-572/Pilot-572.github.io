@@ -1,9 +1,11 @@
 node_modules/
 temporary screenshots/
+extra (DO NOT DELETE)/
+.claude/
 screenshot.mjs
 serve.mjs
 package.json
 package-lock.json
+memories.json
 *.txt
 *.md
-CLAUDE.md
