@@ -1,0 +1,45 @@
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PROJECTS ORIGINAL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Legend: x - individual project
+	x.1 - the small paragraph on the main page
+	x.2 - the paragraph at clicking the project
+
+1. DIY E-Ink Tablet:
+	1.1 A custom-built, DIY e-ink tablet with a pen and/or touchscreen
+	1.2 A custom e-ink tablet built from scratch with the aim of not having heavy school textbooks and notebooks for every subject I have in that day. Of course, I can't eliminate all of the notebooks and textbooks with the sole reason being that some teachers require them, but I can certainly use them at most of the subjects I have. I want to make it to be accessible but still look and feel like a quality product, because no parent or kid is going to pay, for example, for a Remarkable product (lovely products but expensive). I can say that with this project I could go at national competitions, for example ONCS or RoSEF.
+
+2. Sim Racing Rig:
+	2.1 My own realistic sim racing rig on which I can be even more competitive.
+	2.2 I currently have built a custom force feedback direct drive wheelbase with a steering wheel which I made myself. I used the FFBeast firmware and software but I can say it was a real job documenting myself and  finding the compatible parts for it. Several builds are already in the planning stage, one of them being a from-scratch aluminium extrusion frame designed and assembled by me, with the direction of having a rigid frame to have a driving position which is fixed, so the wheel, pedals and monitor sit exactly the same every session, and muscle memory can actually build. No flex, no shift, no guessing where the brake point is because the pedals moved. With it I want to continue my Iracing career, now currently being on Assetto Corsa Competizione.
+
+----- NOT USED -----
+3. Home NAS Server:
+	3.1 TrueNAS on a2008 Phenom, RAIDZ1, ran on less than 800 gb of storage across 4 drives. Ran it, learned from it, retired it.
+	3.2 A repurposed old PC into a NAS server with cross-device file sync, but the hardware was simply too old and the storage too small for it to be a practical project to keep running. I can, of course, upgrade the storage and use it but the recent prices of RAM and storage make it just too expensive. I can confidently say that with this project I learned home networking, Linux configuration and how to build something useful out of hardware most people would just throw away.
+--------------------
+
+3. Home network:
+	3.1 Upgrading my home network with enterprise level products with future plans
+	3.2 My home network is a bit... different. At first, when I moved in my house, the modem, switch, router and all cables were cramped into a tiny space, but after I made my workshop in my garage I was able to get them more organised. Now, with the recently completed project transformed my network on a whole another level. With my ambition of learning new stuff, I got myself tools and equipment for crimping ethernet wires and it was possible to add an enterprise 52 port switch along with a 7 port patch panel. With this project I learned how to crimp ethernet cables, the standard of it and I added something new to my workshop
+
+4. Electronics & Arduino:
+	4.1 From a simple Arduino Nano or Arduino Leonardo, to using Odrive motor controllers with 250w motors...
+	4.2 I have worked with Arduinos, BLDC motors and BLDC 3 phase motor controllers, with multimeters and soldering irons, I can confidently say that I have worked with a vast selection or bench tools. I have also worked with power tools, angle grinders, drills and more. Recently I bought myself a new soldering iron for a more professional and clean way to solder, a high quality pen soldering iron.
+
+5. BeamNG Cinematic Edits:
+	5.1 From hardware to BeamNG edits, here are some of my edits, some with my taste of music, some with what viewers want to see.
+	5.2 N/A
+
+6. 3D Printing & Fabrication:
+	6.1 One, maybe the most important machine which I own.
+	6.2 Last year, I made the best decision I could, that being to get myself a FDM 3D printer, that being the BambuLab A1 with their AMS Lite. I choose this model and this company because their reliable 3d printers and the relatively cheap price made the perfect sense for a beginner back then, and with the multi-filament 3D printing, via the AMS Lite which supports 4 different filaments made my experience much more enjoyable. I have used 3D printing in a consumer way, I made myself 3D prints for a better management of objects and I used 3D printing in my projects too, but I also used it as a way to sell objects, accessories, and so on to other people, I have made a nearly 100 pounds out of this small "business"
+
+7. My PC Setup:
+	7.1 My most beautiful project out of all of them, and the cherry on top, my wall-mounted build
+	7.2 My PC setup has reached it's "peak" for the space I have in my room, with plans of moving in another space of the house where its much bigger, so i can have my sim racing rig there too. While having an ultrawide monitor which immerses me in games and which makes me more efficient when working, the main component of the entire setup is my PC, which features solid specifications, but the most important piece is my "case", which is entirely made by me, from making the CAD models in Fusion 360 to cutting and assembling it. I have made it with the main reason of having a cleaner space, without a massive PC case on my desk, and I can confidently say I made the right choice.
+ 
+8. My workshop:
+	8.1 A essential place for me and my projects.
+	8.2 The space in which I worked in and helped me make the actual hardware is my garage workshop. In it I have hand tools, power tools, my 3D printer and my different "stations" for doing and storing different things, for example, one station hold all of my 3D printing equipment and another holds all of my hand tools. I also have the soldering station, where, as the name says, I solder. In here I also have my professional kart with which I raced in official national competitions.
