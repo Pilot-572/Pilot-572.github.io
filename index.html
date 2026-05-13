@@ -79,14 +79,6 @@
     }
 
     /* ─── GRAIN ──────────────────────────── */
-    body::after {
-      content: '';
-      position: fixed; inset: 0;
-      pointer-events: none; z-index: 9997;
-      opacity: 0.028;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-      background-size: 160px 160px;
-    }
 
     /* ─── CARD SPOTLIGHT ─────────────────── */
     .project-card .card-spotlight {
@@ -1269,8 +1261,8 @@
       pointer-events: none;
       z-index: 9998;
       background:
-        linear-gradient(to right, rgba(127,255,0,0.07) 0%, transparent 14%),
-        linear-gradient(to left,  rgba(127,255,0,0.07) 0%, transparent 14%);
+        linear-gradient(to right, rgba(127,255,0,0.05) 0%, transparent 8%),
+        linear-gradient(to left,  rgba(127,255,0,0.05) 0%, transparent 8%);
     }
 
     /* ─── NOISE OVERLAY ─────────────────── */
@@ -1599,8 +1591,8 @@
 
         <div class="chartreuse-text">
           <h2 class="reveal">Chartreuse<span class="accent">.</span></h2>
-          <p class="reveal">[Describe what Chartreuse is — your personal creative brand, what it stands for, and why you started it. What's the vision behind the name and the green?]</p>
-          <p class="reveal">Cinematic car edits produced in BeamNG.drive, posted to Instagram. [Add a line about your edit style — the atmosphere you go for, your music taste, and what makes your edits different.]</p>
+          <p class="reveal">My personal creative brand — started as a joke that stayed. It began with CRT (Chartreuse Racing Team), then grew into two more branches. The name came from a classmate who found the colour online during a Robotics camp at Logiscool. That was the day Chartreuse became mine.</p>
+          <p class="reveal">My close friend also uses CCT for school projects, which makes it feel more real than it probably should.</p>
         </div>
       </div>
 
@@ -1608,17 +1600,17 @@
         <div class="team-card reveal">
           <div class="team-abbr">CRT</div>
           <div class="team-name">Chartreuse Racing Team</div>
-          <p class="team-desc">[Describe CRT — the sim racing side of Chartreuse. What you compete in, what sims you run, what the team identity is.]</p>
+          <p class="team-desc">The sim racing side of Chartreuse. Competed in iRacing official races with a custom-made livery on the Porsche Cayman 718.</p>
+        </div>
+        <div class="team-card reveal">
+          <div class="team-abbr">CCT</div>
+          <div class="team-name">Chartreuse Creativity Team</div>
+          <p class="team-desc">The visual and cinematic side. BeamNG.drive car edits, video work, whatever else I feel like making. If it's Chartreuse and it's not a race or a troop, it's probably CCT.</p>
         </div>
         <div class="team-card reveal">
           <div class="team-abbr">CTIT</div>
-          <div class="team-name">Chartreuse IT</div>
-          <p class="team-desc">[Describe CTIT — the tech and infrastructure arm of Chartreuse. Home lab, networking, server work, software projects.]</p>
-        </div>
-        <div class="team-card reveal">
-          <div class="team-abbr">CDT</div>
-          <div class="team-name">Chartreuse Design Team</div>
-          <p class="team-desc">[Describe CDT — creative direction, visuals, video editing, cinematic content, and the overall brand aesthetic.]</p>
+          <div class="team-name">Chartreuse Tactical Intervention Team</div>
+          <p class="team-desc">My Ready Or Not troop. My friends have ICON troops and META troops, and I genuinely don't know what those stand for. It's purely fictional — just an extra branch for Chartreuse.</p>
         </div>
       </div>
     </div>
