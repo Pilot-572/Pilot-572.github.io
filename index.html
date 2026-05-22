@@ -1986,8 +1986,9 @@
     if (isTouch) {
       document.getElementById('cursor-dot').style.display = 'none';
       document.getElementById('cursor-ring').style.display = 'none';
-      document.body.style.cursor = '';
-      document.querySelectorAll('*').forEach(el => el.style.cursor = '');
+      const s = document.createElement('style');
+      s.textContent = '* { cursor: auto !important; } a, button, [role="button"] { cursor: pointer !important; }';
+      document.head.appendChild(s);
     }
 
     // ── Custom cursor ───────────────────────────────
