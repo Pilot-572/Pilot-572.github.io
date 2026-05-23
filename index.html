@@ -1646,7 +1646,7 @@
             <span class="link-arrow">↗</span>
           </a>
 
-          <a href="https://instagram.com/chartreuse_racing_team" class="contact-link" target="_blank" rel="noopener">
+          <a href="https://instagram.com/pillot2011_2111" class="contact-link" target="_blank" rel="noopener">
             <div class="contact-link-left">
               <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                 <rect x="2" y="2" width="20" height="20" rx="5"/>
@@ -1655,7 +1655,7 @@
               </svg>
               <div>
                 <span class="link-platform">Instagram</span>
-                <span class="link-value">@chartreuse_racing_team</span>
+                <span class="link-value">@pillot2011_2111</span>
               </div>
             </div>
             <span class="link-arrow">↗</span>
@@ -1970,16 +1970,17 @@
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-links a');
     const onScroll = () => {
-      const y = window.scrollY + 120;
+      const y = window.scrollY + window.innerHeight * 0.7;
+      let current = sections[0];
       sections.forEach(sec => {
-        if (y >= sec.offsetTop && y < sec.offsetTop + sec.offsetHeight) {
-          navLinks.forEach(a => {
-            a.classList.toggle('active', a.getAttribute('href') === `#${sec.id}`);
-          });
-        }
+        if (sec.getBoundingClientRect().top + window.scrollY <= y) current = sec;
+      });
+      navLinks.forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === `#${current.id}`);
       });
     };
     window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
 
     // ── Touch detection — disable mouse-only effects ─
     const isTouch = ('ontouchstart' in window) || navigator.maxTouchPoints > 0;
