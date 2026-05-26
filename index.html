@@ -1933,7 +1933,9 @@
       modalDesc.innerHTML = card.dataset.desc;
       const raw = card.dataset.imgs || '';
       _imgs = raw ? raw.split(',').map(s => s.trim()).filter(Boolean) : [];
+      const modalImgWrap = document.getElementById('modalImgWrap');
       if (_imgs.length) {
+        modalImgWrap.style.display = '';
         modalImg.alt = card.dataset.title;
         const multi = _imgs.length > 1;
         modalPrev.hidden = !multi;
@@ -1941,6 +1943,7 @@
         modalCounter.hidden = !multi;
         showImg(0);
       } else {
+        modalImgWrap.style.display = 'none';
         modalImg.src = ''; modalImg.style.display = 'none'; modalImgBlur.style.backgroundImage = '';
         modalPrev.hidden = modalNext.hidden = modalCounter.hidden = true;
       }
