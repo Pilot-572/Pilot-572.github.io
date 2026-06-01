@@ -96,6 +96,8 @@
 
     /* ─── CURSOR ─────────────────────────── */
     * { cursor: none !important; }
+    body.touch-mode * { cursor: auto !important; }
+    body.touch-mode a, body.touch-mode button, body.touch-mode [role="button"] { cursor: pointer !important; }
     #cursor-dot {
       position: fixed; top: 0; left: 0; z-index: 9999; pointer-events: none;
       width: 6px; height: 6px; border-radius: 50%;
@@ -1985,24 +1987,24 @@
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
 
-    // ── Touch detection — switch to native cursor only if touch is actually used ─
+    // ── Touch / mouse cursor switching ──────────────
     let isTouch = false;
-    document.addEventListener('pointerdown', e => {
-      if (e.pointerType === 'touch' && !isTouch) {
-        isTouch = true;
-        document.getElementById('cursor-dot').style.display = 'none';
-        document.getElementById('cursor-ring').style.display = 'none';
-        const s = document.createElement('style');
-        s.textContent = '* { cursor: auto !important; } a, button, [role="button"] { cursor: pointer !important; }';
-        document.head.appendChild(s);
-      }
+    document.addEventListener('touchstart', () => {
+      isTouch = true;
+      document.body.classList.add('touch-mode');
+      dot.style.opacity = '0'; ring.style.opacity = '0';
+    }, { passive: true });
+    document.addEventListener('pointermove', e => {
+      if (e.pointerType !== 'mouse') return;
+      if (isTouch) { isTouch = false; document.body.classList.remove('touch-mode'); }
     });
 
     // ── Custom cursor ───────────────────────────────
     const dot = document.getElementById('cursor-dot');
     const ring = document.getElementById('cursor-ring');
     let mx = 0, my = 0, rx = 0, ry = 0;
-    document.addEventListener('mousemove', e => {
+    document.addEventListener('pointermove', e => {
+      if (e.pointerType !== 'mouse') return;
       mx = e.clientX; my = e.clientY;
       dot.style.opacity = '1'; ring.style.opacity = '1';
     });
