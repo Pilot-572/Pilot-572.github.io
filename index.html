@@ -100,16 +100,16 @@
       position: fixed; top: 0; left: 0; z-index: 9999; pointer-events: none;
       width: 6px; height: 6px; border-radius: 50%;
       background: var(--accent);
-      transform: translate(-50%, -50%);
-      transition: transform 0.08s ease, opacity 0.2s ease;
+      opacity: 0;
+      transition: opacity 0.2s ease;
       will-change: transform;
     }
     #cursor-ring {
       position: fixed; top: 0; left: 0; z-index: 9998; pointer-events: none;
       width: 32px; height: 32px; border-radius: 50%;
       border: 1px solid rgba(127,255,0,0.5);
-      transform: translate(-50%, -50%);
-      transition: transform 0.18s cubic-bezier(0.25, 0.46, 0.45, 0.94), width 0.2s ease, height 0.2s ease, opacity 0.2s ease;
+      opacity: 0;
+      transition: width 0.2s ease, height 0.2s ease, opacity 0.2s ease;
       will-change: transform;
     }
     body:has(a:hover) #cursor-ring,
@@ -1472,15 +1472,15 @@
           <span class="card-arrow">↗</span>
         </div>
 
-        <!-- NAS Server -->
+        <!-- Home Server -->
         <div class="project-card reveal" role="button" tabindex="0"
-          data-title="Home NAS Server"
-          data-tag="Networking · Decommissioned"
-          data-desc="A repurposed old PC turned into a NAS server with cross-device file sync. The hardware was simply too old and the storage too small to keep it practical. I could upgrade the storage and keep it running, but current prices of RAM and drives make it too expensive to justify. With this project I learned home networking, Linux configuration, and how to build something useful out of hardware most people would just throw away.">
+          data-title="Home Server"
+          data-tag="Networking · Recommissioned"
+          data-desc="I said I retired it. I lied. The 2008 Phenom is running Proxmox now, which lets me run multiple virtual machines on the same hardware. One of them runs Wire-pod, the backend that makes my Vector robot actually useful instead of being a brick. I also set up Tailscale for remote networking, so all my devices are on the same private network regardless of where I am. On top of that, Sunshine on my main PC and Moonlight on my laptop and phone means I can stream my full desktop from any network: games, apps, everything. Wake-on-LAN handles powering it on remotely so I don't have to leave it running 24/7.">
           <div class="project-body">
-            <span class="project-tag" style="color:#888;">Networking · Decommissioned</span>
-            <h3 class="project-title">Home NAS Server</h3>
-            <p class="project-desc">TrueNAS on a 2008 Phenom, RAIDZ1, under 800 GB across 4 drives. Ran it, learned from it, retired it.</p>
+            <span class="project-tag" style="color:#7FFF00;">Networking · Recommissioned</span>
+            <h3 class="project-title">Home Server</h3>
+            <p class="project-desc">Turns out I wasn't done with it. The old Phenom is back: Proxmox, Wire-pod for my Vector robot, and Tailscale + Sunshine/Moonlight so I can stream my main PC to my laptop or phone from anywhere.</p>
           </div>
           <span class="card-arrow">↗</span>
         </div>
@@ -1985,30 +1985,33 @@
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
 
-    // ── Touch detection — disable mouse-only effects ─
-    const isTouch = ('ontouchstart' in window) || navigator.maxTouchPoints > 0;
-    if (isTouch) {
-      document.getElementById('cursor-dot').style.display = 'none';
-      document.getElementById('cursor-ring').style.display = 'none';
-      const s = document.createElement('style');
-      s.textContent = '* { cursor: auto !important; } a, button, [role="button"] { cursor: pointer !important; }';
-      document.head.appendChild(s);
-    }
+    // ── Touch detection — switch to native cursor only if touch is actually used ─
+    let isTouch = false;
+    document.addEventListener('pointerdown', e => {
+      if (e.pointerType === 'touch' && !isTouch) {
+        isTouch = true;
+        document.getElementById('cursor-dot').style.display = 'none';
+        document.getElementById('cursor-ring').style.display = 'none';
+        const s = document.createElement('style');
+        s.textContent = '* { cursor: auto !important; } a, button, [role="button"] { cursor: pointer !important; }';
+        document.head.appendChild(s);
+      }
+    });
 
     // ── Custom cursor ───────────────────────────────
     const dot = document.getElementById('cursor-dot');
     const ring = document.getElementById('cursor-ring');
-    let mx = -100, my = -100, rx = -100, ry = -100;
-    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY;
+      dot.style.opacity = '1'; ring.style.opacity = '1';
+    });
     document.addEventListener('mouseleave', () => { dot.style.opacity = '0'; ring.style.opacity = '0'; });
-    document.addEventListener('mouseenter', () => { dot.style.opacity = '1'; ring.style.opacity = '1'; });
     (function animateCursor() {
-      dot.style.left = mx + 'px';
-      dot.style.top  = my + 'px';
+      dot.style.transform = `translate(${mx - 3}px, ${my - 3}px)`;
       rx += (mx - rx) * 0.12;
       ry += (my - ry) * 0.12;
-      ring.style.left = rx + 'px';
-      ring.style.top  = ry + 'px';
+      ring.style.transform = `translate(${rx - 16}px, ${ry - 16}px)`;
       requestAnimationFrame(animateCursor);
     })();
 
