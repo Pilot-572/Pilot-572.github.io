@@ -451,6 +451,43 @@
       border: 1px solid var(--border);
     }
 
+    .project-card.featured {
+      grid-column: 1 / -1;
+      background: linear-gradient(120deg, rgba(127,255,0,0.04) 0%, var(--bg) 60%);
+      border-left: 2px solid var(--accent);
+    }
+    .project-card.featured:hover {
+      box-shadow: 0 0 0 1px var(--accent-border), -4px 0 0 0 var(--accent), 0 20px 60px rgba(127,255,0,0.12), 0 4px 20px rgba(0,0,0,0.4);
+    }
+    .featured-label {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+    .homelab-services {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 1.25rem;
+    }
+    .homelab-service {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.08em;
+      color: var(--text-dim);
+      border: 1px solid var(--border);
+      padding: 0.2rem 0.55rem;
+      border-radius: 2px;
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+    .project-card.featured:hover .homelab-service {
+      color: var(--text);
+      border-color: var(--accent-border);
+    }
+
     .project-card {
       background: var(--bg);
       cursor: pointer;
@@ -1376,6 +1413,21 @@
       <h2 class="section-title reveal" style="margin-bottom:2.5rem;">What I've Built</h2>
 
       <div class="projects-grid">
+
+        <!-- Homelab — Featured -->
+        <div class="project-card featured reveal" role="button" tabindex="0"
+          data-title="Homelab"
+          data-tag="Networking / Self-Hosted"
+          data-imgs="images/homelab_ha.png,images/homelab_proxmox.png,images/homelab_adguard.png,images/homelab_tree.png"
+          data-desc="This is the project I am most proud of. What started as a single repurposed PC grew into a full self-hosted infrastructure that runs 24/7. The house is automated. The network filters its own traffic. Passwords are self-managed. Cameras feed into the automation system. My desktop is streamable from any device, anywhere in the world. A robot runs off it. My notes sync through it. Everything is reachable remotely through a private tunnel, and wake-on-LAN keeps machines off until they are needed. None of this runs on paid cloud. All of it runs at home, on hardware most people would throw away.">
+          <div class="project-body" style="padding: 2.5rem;">
+            <span class="featured-label">MAIN PROJECT</span>
+            <span class="project-tag">Networking / Self-Hosted</span>
+            <h3 class="project-title" style="font-size: clamp(1.4rem, 2.5vw, 2rem); margin-top: 0.5rem;">Homelab</h3>
+            <p class="project-desc">My longest-running project and the one I am most proud of. Home automation, network security, remote access, a camera system, and more — all self-hosted, all running on repurposed hardware. None of it on paid cloud.</p>
+          </div>
+          <span class="card-arrow">↗</span>
+        </div>
 
         <!-- Electronics -->
         <div class="project-card reveal" role="button" tabindex="0"
