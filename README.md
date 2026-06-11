@@ -1,6 +1,6 @@
 # Fabian Prodan's personal portfolio site, hosted at pilot-572.github.io
 
-![Preview](assets/preview.gif)
+![Preview](videos/preview.gif)
 
 ## What it is
 
