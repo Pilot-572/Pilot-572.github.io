@@ -1,4 +1,4 @@
-# Fabian Prodan's personal portfolio site, hosted at pilot-572.github.io
+# Fabian's personal portfolio site, hosted at pilot-572.github.io
 
 ![Preview](videos/preview.gif)
 
