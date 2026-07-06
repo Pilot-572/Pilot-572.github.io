@@ -501,7 +501,7 @@
       background: var(--bg-surface);
       box-shadow: 0 0 0 1px var(--accent-border), 0 20px 60px rgba(127,255,0,0.1), 0 4px 20px rgba(0,0,0,0.4);
     }
-    .project-card:hover .card-arrow { transform: translate(3px,-3px); color: var(--accent); }
+    .project-card:hover .card-arrow { transform: translate(3px,-3px); border-color: var(--accent); }
     .project-card:hover .project-img-inner::before { opacity: 1; }
     .project-card:hover .project-img-inner img { transform: scale(1.06); }
 
@@ -564,9 +564,18 @@
     .card-arrow {
       position: absolute;
       top: 1.25rem; right: 1.25rem;
-      font-size: 1rem;
-      color: var(--text-muted);
-      transition: transform 0.2s ease, color 0.2s ease;
+      width: 2rem; height: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      color: var(--accent);
+      background: rgba(10,10,10,0.85);
+      border: 1px solid var(--accent-border);
+      border-radius: 2px;
+      z-index: 2;
+      transition: transform 0.2s ease, border-color 0.2s ease;
     }
 
     /* ─── MODAL ──────────────────────────── */
@@ -695,9 +704,9 @@
     .modal-nav[hidden], .modal-counter[hidden] { display: none; }
     .modal-counter {
       position: absolute; bottom: 0.55rem; left: 50%; transform: translateX(-50%);
-      font-family: var(--font-mono); font-size: 0.52rem; letter-spacing: 0.15em;
-      color: var(--text-muted); background: rgba(10,10,10,0.65);
-      padding: 0.2rem 0.55rem; z-index: 5; pointer-events: none;
+      font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.15em;
+      color: var(--text); background: rgba(10,10,10,0.85);
+      padding: 0.25rem 0.6rem; z-index: 5; pointer-events: none;
     }
 
     /* ─── CHARTREUSE ──────────────────────── */
@@ -900,7 +909,9 @@
       font-family: var(--font-mono);
       font-size: 0.7rem;
       letter-spacing: 0.1em;
-      color: rgba(255,255,255,0.6);
+      color: rgba(255,255,255,0.85);
+      background: rgba(10,10,10,0.85);
+      padding: 0.25rem 0.6rem;
       z-index: 2;
     }
     .video-dots {
@@ -1272,7 +1283,8 @@
         max-height: 100dvh;
         overflow-y: auto;
       }
-      .modal-overlay { align-items: flex-end; }
+      .modal-overlay { align-items: flex-end; padding: 0; }
+      #videoModalOverlay { align-items: center; }
       .modal-img { max-height: 50vw; }
       .modal-close { top: 0.5rem; right: 0.5rem; width: 28px; height: 28px; font-size: 0.8rem; }
       .modal-nav { width: 28px; height: 28px; font-size: 0.75rem; }
@@ -1950,7 +1962,7 @@
         setTimeout(() => entry.target.classList.add('visible'), delay);
         revealObserver.unobserve(entry.target);
       });
-    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+    }, { threshold: 0, rootMargin: '0px 0px 200px 0px' });
     revealEls.forEach(el => revealObserver.observe(el));
 
     // ── Logiscool diplomas expand ───────────────────
